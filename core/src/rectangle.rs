@@ -163,7 +163,7 @@ impl Rectangle<f32> {
         })
     }
 
-    /// Expands the [`Rectangle`] with the given padding.
+    /// Expands the [`Rectangle`] with the given [`Padding`].
     pub fn expand(self, padding: impl Into<Padding>) -> Self {
         let padding: Padding = padding.into();
         Self {
