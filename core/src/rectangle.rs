@@ -1,4 +1,4 @@
-use crate::{Point, Radians, Size, Vector};
+use crate::{Padding, Point, Radians, Size, Vector};
 
 /// An axis-aligned rectangle.
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Default)]
@@ -170,6 +170,16 @@ impl Rectangle<f32> {
             y: self.y - amount,
             width: self.width + amount * 2.0,
             height: self.height + amount * 2.0,
+        }
+    }
+
+    /// Expands the [`Rectangle`] to include the given [`Padding`]
+    pub fn with_padding(self, padding: Padding) -> Self {
+        Self {
+            x: self.x - padding.left,
+            y: self.y - padding.top,
+            width: self.width + padding.left + padding.right,
+            height: self.height + padding.left + padding.right,
         }
     }
 
