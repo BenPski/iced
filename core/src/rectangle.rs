@@ -163,18 +163,9 @@ impl Rectangle<f32> {
         })
     }
 
-    /// Expands the [`Rectangle`] a given amount.
-    pub fn expand(self, amount: f32) -> Self {
-        Self {
-            x: self.x - amount,
-            y: self.y - amount,
-            width: self.width + amount * 2.0,
-            height: self.height + amount * 2.0,
-        }
-    }
-
-    /// Expands the [`Rectangle`] to include the given [`Padding`]
-    pub fn with_padding(self, padding: Padding) -> Self {
+    /// Expands the [`Rectangle`] with the given padding.
+    pub fn expand(self, padding: impl Into<Padding>) -> Self {
+        let padding: Padding = padding.into();
         Self {
             x: self.x - padding.left,
             y: self.y - padding.top,
